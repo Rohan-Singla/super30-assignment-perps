@@ -44,7 +44,9 @@ export interface Order {
 }
 
 export interface User {
-
+    userId : string,
+    initialBalance : number,
+    lockedBalance : number
 }
   
 
@@ -53,7 +55,14 @@ app.post("/api/users",async (req,res) => {
     
     const { userId, initialBalance } = req.body;
 
-    await client.set(`user-${userId}`, initialBalance);
+    const user : User = {
+        userId : userId,
+        initialBalance : initialBalance,
+        lockedBalance : 0
+    }
+
+    
+    await client.set(`user-${userId}`, JSON.stringify(user));
 
 
 

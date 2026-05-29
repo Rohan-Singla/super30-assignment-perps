@@ -12,13 +12,17 @@ export async function matchBuy (order : Order) {
 
         let asks = orderbook.asks;
 
+        const prices = Object.keys(asks).map(Number);
+
+        prices.sort((a,b)=>{
+
+            return a-b;
+
+        })
+        
         for (const i of asks) {
            
-            const prices = Object.keys(i);
 
-            
-
-            console.log(prices);
 
 
         }
